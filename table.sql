@@ -9,7 +9,7 @@ DROP TABLE IF EXISTS facture;
 DROP TABLE IF EXISTS ligne_facture;
 DROP TABLE IF EXISTS payement;
 
-CREATE TABLE ligue (
+create table ligue (
 compte INT PRIMARY KEY NOT NULL,
 intitule VARCHAR(64),
 tresorier VARCHAR(64),
