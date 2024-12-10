@@ -10,10 +10,10 @@ DROP TABLE IF EXISTS ligne_facture;
 DROP TABLE IF EXISTS payement;
 
 CREATE TABLE ligue (
-    compte INT PRIMARY KEY NOT NULL,
-    intitule VARCHAR(64),
-    tresorier VARCHAR(64),
-    sport VARCHAR(64)
+compte INT PRIMARY KEY NOT NULL,
+intitule VARCHAR(64),
+tresorier VARCHAR(64),
+sport VARCHAR(64)
 );
 
 insert into ligue (compte, intitule, tresorier, sport) VALUES
@@ -23,9 +23,9 @@ insert into ligue (compte, intitule, tresorier, sport) VALUES
 (411010, 'Ligue de Baby-foot', 'Sylvain Delahousse', 'BABYFOOT');
 
 create table prestation (
-    code VARCHAR(64) PRIMARY KEY NOT NULL,
-    libelle VARCHAR(64),
-    pu DECIMAL(10, 2)
+code VARCHAR(64) PRIMARY KEY NOT NULL,
+libelle VARCHAR(64),
+pu DECIMAL(10, 2)
 );
 
 insert into prestation (code, libelle, pu) VALUES
@@ -35,23 +35,23 @@ insert into prestation (code, libelle, pu) VALUES
 ('TRACEUR', 'Utilisation du traceur', 0.356);
 
 create table facture (
-    numfacture VARCHAR(64) PRIMARY KEY NOT NULL,
-    date VARCHAR(64),
-    echeance VARCHAR(64),
-    compte_ligue INT,
-    FOREIGN KEY (compte_ligue) REFERENCES ligue(compte)
+numfacture VARCHAR(64) PRIMARY KEY NOT NULL,
+date VARCHAR(64),
+echeance VARCHAR(64),
+compte_ligue INT,
+FOREIGN KEY (compte_ligue) REFERENCES ligue(compte)
 );
 
 insert into facture (numfacture, date, echeance, compte_ligue) VALUES
 ('FC 5218', '01/01/2012', '31/01/2012', 411010);
 
 create table ligne_facture (
-    numfacture VARCHAR(64),
-    FOREIGN KEY (numfacture) REFERENCES facture(numfacture),
-    code_prestation VARCHAR(64),
-    FOREIGN KEY (code_prestation) REFERENCES prestation(code),
-    quantite INT,
-    montant_ttc DECIMAL(10, 2)
+numfacture VARCHAR(64),
+FOREIGN KEY (numfacture) REFERENCES facture(numfacture),
+code_prestation VARCHAR(64),
+FOREIGN KEY (code_prestation) REFERENCES prestation(code),
+quantite INT,
+montant_ttc DECIMAL(10, 2)
 );
 
 insert into ligne_facture (numfacture, code_prestation, quantite, montant_ttc) VALUES
@@ -61,9 +61,9 @@ insert into ligne_facture (numfacture, code_prestation, quantite, montant_ttc) V
 ('FC 5218', 'TRACEUR', 1, 0.36);
 
 create table payement (
-    numfacture VARCHAR(64),
-    total_ttc DECIMAL(10, 2),
-    FOREIGN KEY (numfacture) REFERENCES facture(numfacture)
+numfacture VARCHAR(64),
+total_ttc DECIMAL(10, 2),
+FOREIGN KEY (numfacture) REFERENCES facture(numfacture)
 );
 
 insert into payement (numfacture, total_ttc) VALUES
