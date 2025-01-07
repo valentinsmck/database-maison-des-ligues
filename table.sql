@@ -50,6 +50,7 @@ numfacture VARCHAR(64),
 FOREIGN KEY (numfacture) REFERENCES facture(numfacture),
 code_prestation VARCHAR(64),
 FOREIGN KEY (code_prestation) REFERENCES prestation(code),
+PRIMARY KEY(numfacture,code_prestation),
 quantite INT,
 montant_ttc DECIMAL(10, 2)
 );
