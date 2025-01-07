@@ -62,7 +62,7 @@ insert into ligne_facture (numfacture, code_prestation, quantite, montant_ttc) V
 ('FC 5218', 'TRACEUR', 1, 0.36);
 
 create table payement (
-numfacture VARCHAR(64),
+numfacture VARCHAR(64) PRIMARY KEY,
 total_ttc DECIMAL(10, 2),
 FOREIGN KEY (numfacture) REFERENCES facture(numfacture)
 );
