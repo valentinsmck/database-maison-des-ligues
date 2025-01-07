@@ -46,9 +46,9 @@ insert into facture (numfacture, date, echeance, compte_ligue) VALUES
 ('FC 5218', '01/01/2012', '31/01/2012', 411010);
 
 create table ligne_facture (
-numfacture VARCHAR(64) PRIMARY KEY,
+numfacture VARCHAR(64),
 FOREIGN KEY (numfacture) REFERENCES facture(numfacture),
-code_prestation VARCHAR(64) PRIMARY KEY,
+code_prestation VARCHAR(64),
 FOREIGN KEY (code_prestation) REFERENCES prestation(code),
 quantite INT,
 montant_ttc DECIMAL(10, 2)
@@ -61,7 +61,7 @@ insert into ligne_facture (numfacture, code_prestation, quantite, montant_ttc) V
 ('FC 5218', 'TRACEUR', 1, 0.36);
 
 create table payement (
-numfacture VARCHAR(64) PRIMARY KEY,
+numfacture VARCHAR(64),
 total_ttc DECIMAL(10, 2),
 FOREIGN KEY (numfacture) REFERENCES facture(numfacture)
 );
